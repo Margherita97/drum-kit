@@ -19,8 +19,8 @@ for (const element of buttonSelector) {
 document.addEventListener("keydown", function(event) {
 
     makeSound(event.key);
-    
-    buttonAnimation(buttonInnerHTML);
+
+    buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -67,4 +67,9 @@ function makeSound(key) {
 
 function buttonAnimation(currentKey) {
     const activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
