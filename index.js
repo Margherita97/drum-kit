@@ -8,13 +8,19 @@ for (const element of buttonSelector) {
         const buttonInnerHTML = this.innerHTML;
 
         makeSound(buttonInnerHTML);
+
+        buttonAnimation(buttonInnerHTML);
+
     });
 }
 
 // Detecting keyboard press
 
 document.addEventListener("keydown", function(event) {
+
     makeSound(event.key);
+    
+    buttonAnimation(buttonInnerHTML);
 });
 
 function makeSound(key) {
@@ -57,4 +63,8 @@ function makeSound(key) {
 
             default: console.log(key);
 }
+} 
+
+function buttonAnimation(currentKey) {
+    const activeButton = document.querySelector("." + currentKey);
 }
