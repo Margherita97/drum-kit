@@ -1,3 +1,5 @@
+// Detecting button press
+
 const buttonSelector = document.querySelectorAll(".drum");
 
 for (const element of buttonSelector) {
@@ -5,7 +7,18 @@ for (const element of buttonSelector) {
 
         const buttonInnerHTML = this.innerHTML;
 
-        switch (buttonInnerHTML) {
+        makeSound(buttonInnerHTML);
+    });
+}
+
+// Detecting keyboard press
+
+document.addEventListener("keydown", function(event) {
+    makeSound(event.key);
+});
+
+function makeSound(key) {
+    switch (key) {
 
             case "w":
                 const tom1 = new Audio("sounds/tom-1.mp3");
@@ -42,11 +55,6 @@ for (const element of buttonSelector) {
                 kick.play();
                 break;
 
-            default: console.log(buttonInnerHTML);
-        }
-    });
+            default: console.log(key);
 }
-
-
-// const audio = new Audio("sounds/tom-1.mp3");
-//         audio.play();
+}
